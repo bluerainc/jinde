@@ -1,0 +1,481 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>藝境無限 畢業美展</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,400..900,0..100&family=LXGW+WenKai+TC:wght@400;700&family=Noto+Sans+TC:wght@400;500;700&display=swap">
+<style>
+/* Layout: a layered paper-cut storybook — each chapter opens on one of four painted forest scenes, separated by stacked paper hills; students' own Taiwan endemic species step out of the scenes as cut-outs */
+:root{
+  --paper:#f8f3e6; --sheet:#fffdf7; --mist:#efe8d6;
+  --ink:#1d2b2a; --ink-soft:#5b6762; --line:#e2dac5;
+  --teal:#174a4f;    /* blue-forest shade */
+  --moss:#2f6b4f;    /* leaf green */
+  --cobalt:#2c4fb8;  /* blue magpie */
+  --lilac:#7d6cc9;   /* wisteria */
+  --ember:#d9542b;   /* autumn red-orange */
+  --gold:#e9a72a;    /* autumn yellow */
+  --hill1:#c9dccf; --hill2:#8fb7a8; --hill3:#2f6b4f;
+  --shadow:0 1px 0 rgba(29,43,42,.05),0 18px 34px -22px rgba(29,43,42,.5);
+  --f-display:"Fraunces","Iowan Old Style",Georgia,serif;
+  --f-zh:"LXGW WenKai TC","Kaiti TC","STKaiti","DFKai-SB",serif;
+  --f-body:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#0e2226;--sheet:#15302f;--mist:#112a2b;--ink:#f1ecdc;--ink-soft:#a8b9b0;--line:#26423f;
+  --teal:#9ad1cf;--moss:#8fd1a6;--cobalt:#9db1ff;--lilac:#b9adf2;--ember:#ff8a5c;--gold:#f6c25a;
+  --hill1:#1b3a3a;--hill2:#235049;--hill3:#2d6a55;
+  --shadow:0 1px 0 rgba(0,0,0,.3),0 20px 36px -18px rgba(0,0,0,.85);color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#0e2226;--sheet:#15302f;--mist:#112a2b;--ink:#f1ecdc;--ink-soft:#a8b9b0;--line:#26423f;
+  --teal:#9ad1cf;--moss:#8fd1a6;--cobalt:#9db1ff;--lilac:#b9adf2;--ember:#ff8a5c;--gold:#f6c25a;
+  --hill1:#1b3a3a;--hill2:#235049;--hill3:#2d6a55;
+  --shadow:0 1px 0 rgba(0,0,0,.3),0 20px 36px -18px rgba(0,0,0,.85);color-scheme:dark}
+
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.8;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--paper)}
+a{color:inherit}
+img{display:block;max-width:100%}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1160px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{margin:0;line-height:1.15;text-wrap:balance}
+.en{font-family:var(--f-display);font-variation-settings:"SOFT" 100;font-weight:800}
+.cut{height:auto;pointer-events:none;user-select:none;filter:drop-shadow(0 10px 14px rgba(0,0,0,.25))}
+
+/* nav */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:25;background:color-mix(in srgb,var(--paper) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-block:10px}
+.brand{flex:none;display:flex;align-items:baseline;gap:8px;text-decoration:none;white-space:nowrap}
+.brand b{font-family:var(--f-zh);font-size:20px}
+.brand .en{font-size:15px;color:var(--moss)}
+.nav ul{min-width:0;display:flex;gap:2px;list-style:none;margin:0;padding:0;overflow-x:auto;scrollbar-width:none}
+.nav ul a{display:block;padding:6px 11px;border-radius:999px;text-decoration:none;font-size:14px;white-space:nowrap}
+.nav ul a:hover{background:var(--mist)}
+@media (max-width:640px){.brand .en{display:none}.nav ul a{padding:6px 7px;font-size:13px}}
+
+/* paper-cut hills between scenes and pages */
+.hills{display:block;width:100%;height:auto;margin-top:-1px}
+.hills.flip{transform:scaleY(-1);margin-top:0;margin-bottom:-1px}
+.hills path{filter:drop-shadow(0 -4px 5px rgba(0,0,0,.18))}
+
+/* hero */
+.hero{position:relative;background:#7a3b16}
+.hero .scene{position:relative;aspect-ratio:1672/941;max-height:82vh;width:100%;overflow:hidden}
+.hero .scene img{width:100%;height:100%;object-fit:cover}
+.hero .scene::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(40,18,6,0) 55%,rgba(40,18,6,.3))}
+.titlecard{position:relative;z-index:2;margin-top:-170px}
+.card-paper{background:var(--sheet);border-radius:18px;box-shadow:var(--shadow),0 0 0 8px color-mix(in srgb,var(--sheet) 55%,transparent);padding:32px 36px 30px;max-width:760px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px 28px;align-items:end}
+.kicker{grid-column:1/-1;font-size:14px;color:var(--ink-soft)}
+.kicker b{color:var(--moss)}
+.t-zh{font-family:var(--f-zh);font-size:clamp(52px,9vw,104px);letter-spacing:.08em;line-height:1.05}
+.t-en{line-height:.95}
+.t-en .a{display:block;color:var(--ember);font-size:clamp(22px,3.2vw,34px)}
+.t-en .b{display:block;color:var(--moss);font-size:clamp(46px,7vw,82px)}
+.school{grid-column:1/-1;font-size:13px;color:var(--ink-soft);line-height:1.5}
+.school b{color:var(--moss);font-size:16px;margin-right:8px}
+.when{text-align:right;align-self:start}
+.when .d{font-family:var(--f-display);font-weight:800;font-variation-settings:"SOFT" 100;font-size:clamp(30px,4vw,44px);line-height:1;color:var(--cobalt);font-variant-numeric:tabular-nums;white-space:nowrap}
+.when small{display:block;font-size:13px;color:var(--ink-soft);margin-top:6px}
+.countdown{font-size:14px;color:var(--ink-soft);margin-top:10px}
+.countdown b{font-family:var(--f-display);font-weight:800;font-size:22px;color:var(--ember)}
+@media (max-width:760px){
+  .hero .scene{aspect-ratio:4/3}
+  .hero .scene img{object-position:32% 50%}
+  .titlecard{margin-top:-8px}
+  .card-paper{grid-template-columns:minmax(0,1fr);padding:24px 22px}
+  .when{text-align:left}
+}
+.lede{max-width:34em;margin:26px 0 20px}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:8px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:11px 20px;border-radius:999px;border:1.5px solid var(--moss);background:var(--moss);color:var(--paper);font-weight:700;text-decoration:none;font-size:15px;cursor:pointer;font-family:var(--f-body)}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--ink)}
+.btn:hover{transform:translateY(-1px)}
+.hero-band{background:var(--paper);padding-bottom:56px}
+
+/* sections */
+section{position:relative}
+.pad{padding-block:64px}
+.chap{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:10px 24px;margin-bottom:32px}
+.chap>div{min-width:0}
+.chap .no{font-family:var(--f-display);font-weight:700;font-style:italic;font-variation-settings:"SOFT" 100;font-size:17px;display:block;color:var(--accent,var(--moss))}
+.chap h2{font-family:var(--f-zh);font-size:clamp(32px,5vw,48px)}
+.chap p{margin:0;color:var(--ink-soft);max-width:32em;flex:1 1 18em;min-width:0}
+
+/* banner scene used to open a chapter */
+.banner{position:relative;overflow:hidden;background:var(--teal)}
+.banner img{width:100%;height:clamp(220px,34vw,420px);object-fit:cover}
+.banner.tall img{height:clamp(300px,46vw,560px)}
+
+/* about */
+#about{--accent:var(--ember)}
+.about{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:36px;align-items:start}
+@media (max-width:800px){.about{grid-template-columns:minmax(0,1fr)}}
+.essay p{margin:0 0 16px;max-width:34em}
+.essay p:first-child{font-family:var(--f-zh);font-size:24px;line-height:1.5;color:var(--ember)}
+.units{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;list-style:none;margin:0;padding:0}
+.units li{border-top:1.5px solid var(--ink);padding:10px 2px 4px}
+.units b{font-family:var(--f-zh);font-size:20px;display:block;line-height:1.3}
+.units span{font-size:13px;color:var(--ink-soft)}
+.units .n{font-family:var(--f-display);font-weight:700;font-size:13px;color:var(--ember);float:right}
+.keys{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:44px}
+.keys figure{margin:0}
+.keys img{width:100%;height:auto;border-radius:6px;background:#fff;box-shadow:var(--shadow)}
+.keys figcaption{font-size:13px;color:var(--ink-soft);margin-top:8px}
+@media (max-width:560px){.keys{gap:8px}.keys figcaption{font-size:11px}}
+
+/* visit — over the quiet forest path */
+#visit{--accent:var(--cobalt)}
+.visit-scene{position:relative;background:url("scenes/forest-path.jpg") center/cover no-repeat;padding-block:clamp(48px,7vw,96px)}
+.visit-scene::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,34,38,.15),rgba(14,34,38,.35))}
+.visit-scene .wrap{position:relative}
+.visit-scene .chap h2,.visit-scene .chap p,.visit-scene .chap .no{color:#fffdf7;text-shadow:0 2px 12px rgba(0,0,0,.45)}
+.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;max-width:820px}
+@media (max-width:640px){.cards{grid-template-columns:minmax(0,1fr)}}
+.spec{position:relative;background:var(--sheet);border-radius:16px;box-shadow:var(--shadow);padding:18px 20px 20px;display:grid;grid-template-columns:120px minmax(0,1fr);gap:16px;align-items:center}
+.spec .pic img{width:120px;height:auto;max-height:130px;object-fit:contain}
+.spec .date{font-family:var(--f-display);font-weight:800;font-variation-settings:"SOFT" 100;font-size:42px;line-height:1;color:var(--accent2);font-variant-numeric:tabular-nums}
+.spec .date small{font-size:15px;font-weight:600;color:var(--ink-soft);margin-left:6px}
+.spec h3{font-family:var(--f-zh);font-size:22px;margin-top:4px}
+.spec p{margin:2px 0 0;font-size:14px;color:var(--ink-soft)}
+.spec .by{font-size:12px;color:var(--ink-soft);margin-top:6px}
+.venue{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:24px;margin-top:24px;background:var(--sheet);border-radius:16px;box-shadow:var(--shadow);padding:18px}
+@media (max-width:820px){.venue{grid-template-columns:minmax(0,1fr)}}
+.venue svg{display:block;width:100%;height:auto;border-radius:10px}
+.venue h3{font-family:var(--f-zh);font-size:26px}
+.venue p{margin:6px 0 14px;color:var(--ink-soft)}
+.venue dl{display:grid;grid-template-columns:auto 1fr;gap:6px 16px;margin:0 0 18px;font-size:15px}
+.venue dt{color:var(--ink-soft)}
+.venue dd{margin:0}
+
+/* works */
+#works{--accent:var(--moss)}
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:30px}
+.tab{font-family:var(--f-body);font-size:14px;padding:7px 15px;border-radius:999px;border:1.5px solid var(--line);background:var(--sheet);color:var(--ink);cursor:pointer}
+.tab[aria-pressed="true"]{background:var(--moss);border-color:var(--moss);color:var(--paper)}
+.tab .n{font-family:var(--f-display);font-weight:700;font-size:12px;opacity:.7;margin-left:5px}
+.gallery{columns:4 220px;column-gap:20px}
+.card{display:block;width:100%;break-inside:avoid;margin:0 0 22px;border:0;background:var(--sheet);padding:10px 10px 12px;cursor:pointer;text-align:left;color:var(--ink);font-family:var(--f-body);box-shadow:var(--shadow);border-radius:6px;transition:transform .25s}
+.card:hover{transform:translateY(-4px) rotate(-.5deg)}
+.card img{width:100%;height:auto;border-radius:3px;background:var(--mist)}
+.card .who{display:flex;justify-content:space-between;align-items:baseline;gap:8px;margin-top:9px}
+.card .who b{font-family:var(--f-zh);font-size:18px}
+.card .who span{font-size:12px;color:var(--ink-soft)}
+.card .sp{display:inline-block;font-size:12px;color:var(--moss);border:1px solid color-mix(in srgb,var(--moss) 50%,transparent);border-radius:999px;padding:0 8px;margin-top:6px}
+.more{margin-top:12px;font-size:14px;color:var(--ink-soft)}
+.privacy{font-size:12px;color:var(--ink-soft);margin-top:4px}
+
+/* lightbox */
+.lb{position:fixed;inset:0;z-index:50;background:rgba(8,22,24,.86);display:grid;place-items:center;padding:max(16px,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) max(16px,env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+.lb-inner{width:min(880px,100%);display:grid;gap:12px;max-height:100%}
+.lb-inner img{max-width:100%;max-height:72vh;width:auto;height:auto;margin:0 auto;border-radius:4px;background:#fff}
+.lb-meta{background:var(--sheet);border-radius:12px;padding:12px 16px;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:10px}
+.lb-meta h3{font-family:var(--f-zh);font-size:24px}
+.lb-meta p{margin:0;font-size:13px;color:var(--ink-soft)}
+.lb-actions{display:flex;gap:8px;flex-wrap:wrap}
+.lb-actions .btn{padding:8px 16px;font-size:14px}
+
+/* shop — over the autumn deer scene */
+#shop{--accent:var(--ember)}
+.shop{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:22px}
+.item{grid-column:span 2;background:var(--sheet);border:1px solid var(--line);border-radius:18px;padding:16px;display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:auto auto auto 1fr auto;gap:10px;box-shadow:var(--shadow)}
+.item.wide{grid-column:span 3}
+@media (max-width:900px){.shop{grid-template-columns:repeat(2,minmax(0,1fr))}.item,.item.wide{grid-column:span 1}}
+@media (max-width:520px){.shop{grid-template-columns:minmax(0,1fr)}}
+.stage{aspect-ratio:4/3;border-radius:12px;display:grid;place-items:center;background:radial-gradient(circle at 50% 55%,color-mix(in srgb,var(--gold) 18%,var(--sheet)),var(--mist) 75%);overflow:hidden}
+.stage{position:relative}
+.stage img{position:absolute;left:5%;top:5%;width:90%;height:90%;max-width:none;object-fit:contain;filter:drop-shadow(0 10px 12px rgba(0,0,0,.18))}
+.swatches{display:flex;gap:8px;flex-wrap:wrap}
+.sw{width:52px;height:52px;border-radius:10px;border:2px solid var(--line);background:var(--mist);padding:3px;cursor:pointer;display:grid;place-items:center}
+.sw{overflow:hidden}
+.sw img{width:100%;height:100%;object-fit:contain}
+.sw[aria-pressed="true"]{border-color:var(--ember)}
+.item h3{font-family:var(--f-zh);font-size:23px;display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.item h3 small{font-family:var(--f-body);font-size:12px;font-weight:500;color:var(--ink-soft)}
+.item p{margin:0;font-size:14px;color:var(--ink-soft)}
+.price{display:flex;justify-content:space-between;align-items:baseline;gap:8px;border-top:1px dashed var(--line);padding-top:10px}
+.price b{font-family:var(--f-display);font-weight:800;font-variation-settings:"SOFT" 100;color:var(--ember);font-size:26px;font-variant-numeric:tabular-nums}
+.price span{font-size:13px;color:var(--moss);font-weight:700}
+.combos{margin-top:28px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+@media (max-width:760px){.combos{grid-template-columns:minmax(0,1fr)}}
+.combo{border:1.5px dashed var(--ember);border-radius:14px;padding:14px 16px;display:grid;gap:2px}
+.combo b{font-family:var(--f-zh);font-size:19px}
+.combo span{font-size:13px;color:var(--ink-soft)}
+.combo s{color:var(--ink-soft);font-size:13px;margin-right:6px}
+.combo em{font-style:normal;font-family:var(--f-display);font-weight:800;color:var(--ember);font-size:22px}
+.shop-note{margin-top:16px;font-size:13px;color:var(--ink-soft)}
+
+/* contact */
+.contact{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+@media (max-width:760px){.contact{grid-template-columns:minmax(0,1fr)}}
+.c{background:var(--sheet);border:1px solid var(--line);border-radius:14px;padding:18px}
+.c h3{font-size:15px;color:var(--moss);margin-bottom:6px;font-family:var(--f-body)}
+.c p{margin:0}
+.val{font-size:16px;word-break:break-all;user-select:all;font-variant-numeric:tabular-nums}
+.todo{display:inline-block;font-size:11px;background:var(--ember);color:#fff;padding:0 6px;border-radius:4px;margin-left:6px;vertical-align:middle}
+.copy{margin-top:10px;font-size:13px;padding:5px 12px;border-radius:999px;border:1.5px solid var(--moss);background:transparent;color:var(--ink);cursor:pointer;font-family:var(--f-body)}
+
+footer{background:var(--hill3);color:#f4efe0}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:16px;padding-block:20px 44px;font-size:13px}
+footer .en{font-size:22px;color:#f6d27a}
+footer .critters{display:flex;gap:14px;align-items:end}
+footer .critters img{height:56px;width:auto;max-width:none}
+</style>
+
+<!-- stacked paper hills, reused between scenes -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="hills" viewBox="0 0 1440 120" preserveAspectRatio="none">
+      <path d="M0 120V64C120 30 220 70 340 52S560 14 700 40 940 82 1080 50 1320 20 1440 44V120Z" fill="var(--hill1)"/>
+      <path d="M0 120V86C140 60 260 96 400 78S640 46 780 70 1020 104 1160 80 1360 60 1440 72V120Z" fill="var(--hill2)"/>
+      <path d="M0 120V104C160 90 300 116 460 102S720 86 880 100 1140 116 1300 100 1400 98 1440 102V120Z" fill="var(--paper)"/>
+    </symbol>
+  </defs>
+</svg>
+
+<nav class="nav" aria-label="主選單">
+  <div class="wrap">
+    <a class="brand" href="#top"><b>藝境無限</b><span class="en">Infinite Realms of Art</span></a>
+    <ul>
+      <li><a href="#about">理念</a></li>
+      <li><a href="#visit">時間地點</a></li>
+      <li><a href="#works">作品</a></li>
+      <li><a href="#shop">展售</a></li>
+      <li><a href="#contact">聯繫</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="scene"><img src="scenes/autumn-plants.jpg" srcset="scenes/autumn-plants-s.jpg 900w, scenes/autumn-plants.jpg 1671w" sizes="100vw" alt="秋日森林地面上的毒蠅傘、向日葵、百合、苦楝花與果實" width="1671" height="941"></div>
+  <svg class="hills" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true" style="margin-top:calc(-1 * clamp(36px,8vw,120px));position:relative;z-index:1;height:clamp(36px,8vw,120px)"><use href="#hills"/></svg>
+  <div class="hero-band">
+    <div class="wrap titlecard">
+      <div class="card-paper">
+        <div class="kicker"><b>2027 畢業美展</b>　清大附小美術班 · 進德里</div>
+        <div>
+          <h1 class="t-zh">藝境無限</h1>
+          <div class="t-en en"><span class="a">Infinite Realms of</span><span class="b">Art</span></div>
+        </div>
+        <div class="when"><div class="d">4.2 – 4.12</div><small>2027 · 清華大學圖書館穿堂</small><div class="countdown" id="countdown">距離開幕還有 <b>—</b> 天</div></div>
+        <div class="school"><b>Jinde Village</b>The Affiliated Experimental Elementary School of National Tsing Hua University</div>
+      </div>
+      <p class="lede">六年來，我們畫過森林裡的花、溪邊的蛙、山裡的黑熊和天上的藍鵲。這一次，把整座島嶼的生命帶進清華大學圖書館，邀你走進孩子們筆下的森林。</p>
+      <div class="cta">
+        <a class="btn" href="#works">走進森林看作品</a>
+        <a class="btn ghost" href="#visit">展期與交通</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+<section id="about" class="pad">
+  <div class="wrap">
+    <div class="chap"><div><span class="no">Chapter One</span><h2>展覽理念</h2></div><p>藝境無限 · 藝術創作的無限可能</p></div>
+    <div class="about">
+      <div class="essay">
+        <p>藝境無限，象徵藝術創作的無限可能。</p>
+        <p>從一片葉子的葉脈、一隻石虎的斑點，到街角老店的招牌，孩子們用水彩、水墨、版畫與立體媒材，記錄自己觀察世界的方式。</p>
+        <p>每一件作品，都是一扇通往新世界的門。歡迎你推開它，開啟屬於自己的藝術旅程。</p>
+      </div>
+      <ul class="units">
+        <li><span class="n">I</span><b>台灣特有種</b><span>森林裡的島嶼鄰居</span></li>
+        <li><span class="n">II</span><b>植物</b><span>博物圖鑑式的花卉寫生</span></li>
+        <li><span class="n">III</span><b>水墨名店</b><span>筆墨裡的街角老店</span></li>
+        <li><span class="n">IV</span><b>版畫</b><span>刻、印、疊的手感</span></li>
+        <li><span class="n">V</span><b>甜點人 · 螺鈿</b><span>立體與複合媒材</span></li>
+        <li><span class="n">✦</span><b>文創商品</b><span>帆布袋、杯袋、鑰匙圈、磁鐵、筆記本</span></li>
+      </ul>
+    </div>
+    <div class="keys">
+      <figure><img src="covers/poppy.jpg" alt="主視覺橘紅版" width="851" height="994" loading="lazy"><figcaption>主視覺 · 果實與蕈菇</figcaption></figure>
+      <figure><img src="covers/iris.jpg" alt="主視覺藍色版" width="852" height="994" loading="lazy"><figcaption>主視覺 · 紫藤與勿忘我</figcaption></figure>
+      <figure><img src="covers/rose.jpg" alt="主視覺粉紅版" width="1000" height="1121" loading="lazy"><figcaption>主視覺 · 山茶、玫瑰與蓮</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section id="visit">
+  <svg class="hills flip" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true" style="height:clamp(40px,6vw,90px);position:relative;z-index:1;margin-bottom:calc(-1 * clamp(40px,6vw,90px))"><use href="#hills"/></svg>
+  <div class="visit-scene">
+    <div class="wrap">
+      <div class="chap"><div><span class="no">Chapter Two</span><h2>時間地點</h2></div><p>藍鵲飛來時開幕，石虎回家時撤展。</p></div>
+      <div class="cards">
+        <article class="spec" style="--accent2:var(--cobalt)">
+          <div class="pic"><img class="cut" src="cut/bluemagpie.webp" alt="學生畫的台灣藍鵲" width="700" height="547" loading="lazy"></div>
+          <div><div class="date">4/2<small>週五</small></div><h3>開幕 · 正式展出</h3><p>歡迎家長、師長與校內外朋友蒞臨。</p><div class="by">台灣藍鵲 · 潘○銘 繪</div></div>
+        </article>
+        <article class="spec" style="--accent2:var(--ember)">
+          <div class="pic"><img class="cut" src="cut/leopardcat.webp" alt="學生畫的石虎" width="664" height="589" loading="lazy"></div>
+          <div><div class="date">4/12<small>週一</small></div><h3>展期最後一天</h3><p>錯過就要等明年的新森林了。</p><div class="by">石虎 · 湯○凱 繪</div></div>
+        </article>
+      </div>
+      <div class="venue">
+        <svg viewBox="0 0 560 300" role="img" aria-label="位置示意圖：從光復路清大正門沿步道往北，經成功湖旁，到圖書館旺宏館一樓穿堂">
+          <rect width="560" height="300" fill="var(--mist)"/>
+          <path d="M0 268 H560" stroke="var(--ink-soft)" stroke-width="12" stroke-linecap="round" opacity=".35"/>
+          <text x="18" y="292" fill="var(--ink-soft)" font-family="Noto Sans TC, sans-serif" font-size="12">光復路二段</text>
+          <g fill="var(--moss)" opacity=".28"><circle cx="60" cy="150" r="26"/><circle cx="90" cy="176" r="20"/><circle cx="480" cy="210" r="28"/><circle cx="510" cy="180" r="18"/><circle cx="330" cy="220" r="16"/><circle cx="230" cy="44" r="22"/><circle cx="262" cy="30" r="14"/></g>
+          <ellipse cx="160" cy="98" rx="66" ry="30" fill="color-mix(in srgb, var(--cobalt) 18%, var(--mist))" stroke="var(--cobalt)" stroke-width="1.2"/>
+          <text x="160" y="103" text-anchor="middle" fill="var(--cobalt)" font-family="LXGW WenKai TC, serif" font-size="15">成功湖</text>
+          <path d="M282 258 C 268 214, 214 210, 228 176 S 350 152, 372 128" stroke="var(--ember)" stroke-width="3" fill="none" stroke-dasharray="1 9" stroke-linecap="round"/>
+          <rect x="256" y="252" width="52" height="16" rx="3" fill="var(--sheet)" stroke="var(--ink)" stroke-width="1.5"/>
+          <text x="282" y="244" text-anchor="middle" fill="var(--ink)" font-family="Noto Sans TC, sans-serif" font-size="13">清大正門</text>
+          <rect x="356" y="62" width="136" height="64" rx="8" fill="var(--moss)"/>
+          <text x="424" y="91" text-anchor="middle" fill="var(--paper)" font-family="LXGW WenKai TC, serif" font-size="20" font-weight="700">圖書館</text>
+          <text x="424" y="113" text-anchor="middle" fill="var(--paper)" font-family="Noto Sans TC, sans-serif" font-size="12">旺宏館 · 1F 穿堂</text>
+          <circle cx="372" cy="128" r="7" fill="var(--ember)"/>
+          <g transform="translate(520 34)" stroke="var(--ink-soft)" fill="none"><circle r="14"/><path d="M0 -20 V20 M-20 0 H20"/><text y="-24" text-anchor="middle" fill="var(--ink-soft)" stroke="none" font-family="Fraunces, Georgia, serif" font-size="12">N</text></g>
+          <text x="16" y="24" fill="var(--ink-soft)" font-family="Noto Sans TC, sans-serif" font-size="12">示意圖，非實際比例</text>
+        </svg>
+        <div>
+          <h3>國立清華大學圖書館 穿堂</h3>
+          <p>新竹市東區光復路二段 101 號（旺宏館）</p>
+          <dl>
+            <dt>展期</dt><dd>2027 年 4 月 2 日（五）至 4 月 12 日（一）</dd>
+            <dt>開放時間</dt><dd>依清華大學圖書館公告為準</dd>
+            <dt>交通</dt><dd>由光復路清大正門進入，沿步道步行約 5 分鐘</dd>
+          </dl>
+          <a class="btn" href="https://www.google.com/maps/search/?api=1&query=%E5%9C%8B%E7%AB%8B%E6%B8%85%E8%8F%AF%E5%A4%A7%E5%AD%B8%E6%97%BA%E5%AE%8F%E9%A4%A8%E5%9C%96%E6%9B%B8%E9%A4%A8" target="_blank" rel="noopener">在 Google 地圖開啟</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <svg class="hills" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true" style="height:clamp(40px,6vw,90px);position:relative;z-index:1;margin-top:calc(-1 * clamp(40px,6vw,90px))"><use href="#hills"/></svg>
+</section>
+
+<section id="works" class="pad">
+  <div class="wrap">
+    <div class="chap"><div><span class="no">Chapter Three</span><h2>作品</h2></div><p>依單元瀏覽，點選作品可放大觀看。</p></div>
+    <div class="tabs" id="tabs" role="toolbar" aria-label="作品單元"></div>
+    <div class="gallery" id="gallery"></div>
+    <p class="more" id="more"></p>
+    <p class="privacy">為保護學童隱私，網站上的姓名皆以「○」隱去中間字。</p>
+  </div>
+</section>
+
+<section id="shop">
+  <div class="banner"><img src="scenes/autumn-deer.jpg" srcset="scenes/autumn-deer-s.jpg 900w, scenes/autumn-deer.jpg 1671w" sizes="100vw" alt="秋日森林裡的梅花鹿、山羌、蝴蝶與鍬形蟲" width="1671" height="941" loading="lazy"></div>
+  <svg class="hills" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true" style="height:clamp(40px,6vw,90px);position:relative;z-index:1;margin-top:calc(-1 * clamp(40px,6vw,90px))"><use href="#hills"/></svg>
+  <div class="wrap pad" style="padding-top:32px">
+    <div class="chap"><div><span class="no">Chapter Four</span><h2>展售商品</h2></div><p>以孩子的作品延伸製作，展場現場販售，所得作為班級畢業活動經費。</p></div>
+    <div class="shop" id="shopGrid"></div>
+    <div class="combos">
+      <div class="combo"><b>學生人氣組</b><span>磁鐵 1 ＋ 鑰匙圈 1</span><div><s>$110</s><em>$100</em></div></div>
+      <div class="combo"><b>紀念組</b><span>帆布袋 1 ＋ 鑰匙圈 1</span><div><s>$260</s><em>$240</em></div></div>
+      <div class="combo"><b>親子收藏組</b><span>帆布袋 1 ＋ 筆記本 1 ＋ 磁鐵 1</span><div><s>$350</s><em>$320</em></div></div>
+    </div>
+    <p class="shop-note">商品於展期內在圖書館穿堂展售區販售，款式依現場庫存為準，售完可登記預購。優惠不重複折抵。所得作為班級畢業活動經費。</p>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="banner"><img src="scenes/forest-animals.jpg" srcset="scenes/forest-animals-s.jpg 900w, scenes/forest-animals.jpg 1672w" sizes="100vw" alt="水彩森林裡，台灣黑熊、台灣藍鵲、草鴞、水獺、山椒魚與山雀聚在紫藤花下" width="1672" height="941" loading="lazy" style="object-position:center 45%"></div>
+  <svg class="hills" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true" style="height:clamp(40px,6vw,90px);position:relative;z-index:1;margin-top:calc(-1 * clamp(40px,6vw,90px))"><use href="#hills"/></svg>
+  <div class="wrap pad" style="padding-top:32px">
+    <div class="chap"><div><span class="no">Chapter Five</span><h2>聯繫我們</h2></div><p>團體參觀預約、商品詢問或媒體採訪，歡迎與我們聯絡。</p></div>
+    <div class="contact">
+      <div class="c"><h3>主辦</h3><p>國立清華大學附設實驗小學<br>美術班畢業班 · 進德里</p></div>
+      <div class="c"><h3>聯絡人<span class="todo">待填</span></h3><p class="val" id="contactName">美術班導師 / 公關組</p><p class="val" id="contactPhone">03-000-0000 #000</p><button class="copy" type="button" data-copy="contactPhone">複製電話</button></div>
+      <div class="c"><h3>Email<span class="todo">待填</span></h3><p class="val" id="contactMail">artclass@example.edu.tw</p><button class="copy" type="button" data-copy="contactMail">複製 Email</button></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <svg class="hills flip" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true" style="height:clamp(30px,5vw,70px)"><use href="#hills"/></svg>
+  <div class="wrap">
+    <div><div class="en">Infinite Realms of Art</div>藝境無限 · 2027 清大附小美術班畢業美展 · 2027.04.02 – 04.12</div>
+    <div class="critters" aria-hidden="true"><img class="cut" src="cut/salamander.webp" alt="" width="70" height="56"><img class="cut" src="cut/bear.webp" alt="" width="39" height="56"><img class="cut" src="cut/pangolin.webp" alt="" width="52" height="56"><img class="cut" src="cut/fawn.webp" alt="" width="44" height="56"></div>
+  </div>
+</footer>
+
+<div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-labelledby="lbName">
+  <div class="lb-inner">
+    <img id="lbImg" alt="">
+    <div class="lb-meta">
+      <div><h3 id="lbName"></h3><p id="lbCat"></p></div>
+      <div class="lb-actions">
+        <button class="btn ghost" type="button" id="lbPrev">‹ 上一件</button>
+        <button class="btn ghost" type="button" id="lbNext">下一件 ›</button>
+        <button class="btn" type="button" id="lbClose">關閉</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// 學生名冊（座號 → 已遮蔽姓名；為保護隱私，原始姓名不放進網站）
+const S={1:"潘○銘",2:"鍾○展",3:"楊○毅",4:"呂○泓",5:"倪○宇",6:"湯○凱",7:"王○語",8:"彭○珊",9:"黃○崴",10:"程○婕",11:"吳○蕎",12:"莊○云",13:"陳○愛",14:"林○熙",16:"彭○",17:"陳○曦",18:"徐○喬",19:"洪○姸",20:"陳○勻",21:"王○",22:"黃○",23:"鄭○勻",24:"林○妍"};
+// 作品：[座號, 檔案 ID, 物種（選填）]；座號 0 = 未標姓名
+const W=[
+ {k:"species",t:"台灣特有種",w:[[1,"1k6NpXAcKOFlpVU6CrqKko-4_lffXLjar","台灣藍鵲"],[2,"1ULtVXrZpG-UXeP0xpsmZIDN8M5Nxygpk"],[3,"1Q2P4ehd8d2gc6gNbcWopWHfari6XeI9P","草鴞"],[4,"128N6AXbKRotw1EwX9H-b-sltmUgShRhf","吉丁蟲"],[5,"1WyzUbbCJaFh92to5yBOLx1XTavhI_0bR","山羌"],[6,"1Z8OVHdN9l6gJ0F4xbLsIGWsHrnwMxdNO","石虎"],[7,"1hOomgSVK7laI-242eI5-cGp3oBSBsPAO","黃山雀"],[9,"1L5MeQ3xx1uAex98p6ksrkt0wDJiK2yQy"],[10,"16yNX0SxV2gf907pi95kUpDn3F1YWqUk5","山椒魚"],[11,"1eTJ-dhToOMiZDTBck5WYAdGfDJcdOBah","樹蛙"],[12,"1tmLAbDWf3QHhBuZ5UM5UVMA_Ibz2KUmG","水獺"],[13,"1D9w0ZTobSDMKlak3D__m6Pmu3-BsVNaL"],[14,"1-NgIFm9CPYpns-RpNuvfYErwny_gMqAz"],[16,"10ta4JPHVNFxd4D1Ly2Ma0xcK9u3vBMwm"],[17,"18bxPVh08tsn_gcHaONdf0oUkj9iX8YxO"],[18,"1jg0DmdEKK1emqm929lYc2RcIwHDxqCra","鍬形蟲"],[19,"1OUDWMjCOe2MCsLz0dwCQeRrLKV5FDqWp","赤腹山雀"],[20,"1NVWuEshrqmJJmi9FhGUmwKJBGQGfh-CC","梅花鹿"],[21,"1LPA_Fij-Za8P-7lJTWdmMixRNmuyPDPL","大冠鷲"],[22,"1plEyet7iWngd1dMuG4f0ICEZonc1YNw-","穿山甲"],[23,"1pxuyV-RlEXrH-EPBVsn4AJ3N5y489dAj","台灣黑熊"],[24,"1N3okt-d9xhNGc5Atui89fXU7AILu3OEr","鼬獾"]]},
+ {k:"plants",t:"植物",w:[[1,"1ke3C6pBVHEKV2-GH81etZGk3s1WtL4cc"],[2,"1a90SMQEyOEH9ArbMch7kAeuuurGEfqnI"],[3,"19GQUpJRxDNVNKn_CqTfQEkd6V31GwJVk"],[4,"1MaXMMprZU56FrmYZGU6NQ3kPm256NUlz"],[5,"1QwPErrLrwAzYFO2rrBBgHHMefFdCEVGs"],[6,"1dtcb37N3eIaxhk3MnBUmxdH3_nEfnd9M"],[7,"1SC9va4_8-YnaZDFVtH3rhcKteD_ZLhPc"],[8,"1qqOspZT4on82IMVQpJqVpfxiYcmYjj3V"],[9,"1q0BNHsTymVXYJL9LYK5l23mahadO9lIC"],[10,"1Nh1Yogx-FWuSn8PSmF3X0IS70l2i-BpX"],[11,"1x_ulM4FV_R83JQ3icoykd6-w907ZzXfv"],[12,"1M67QltbzckrJSBOKz9lxw-BBXvnYAT79"],[13,"17wvoHhgjrqybtsjFqB5Kt5pJp6SUA3CD"],[14,"1LbiX2MWl1Y7ygnDX_kYt9_FUyOPAolrP"],[16,"1HZz_ZEZA0TZyOqlfmtTlu4ANnXDqBKLd"],[17,"1TqxNAU9EfbBKKzdurVkp8PcDKT-bkpFQ"],[18,"1h4m2TPbTKS3nC325douu9SD8veRjf6PD"],[19,"16yCz4MZ01ZNn6fhwvlKN4xr-_LubMaO3"],[20,"1lcfZ3n7mo7KFtnM4Q8RU9yYLiEMM3BOb"],[21,"1Q-gEaahGXuu3F3h8wn4LZ5DOCKv0ahu6"],[22,"1Y7DaUi0u_pHlqqhSBdaDVtFzC0U9ReFo"],[23,"1FGKjjNbKpm-Vxdc1_jTGKBofkEO1x7um"],[24,"1oM8xtkKs0Y7oFEjbaml5CagXODNK2IDB"]]},
+ {k:"ink",t:"水墨名店",w:[[1,"1J7Rnxvxw1u2btE4V0NHMIfGvDUYjNDE7"],[2,"1J7p4o_V4AeviR0ARqDSkwgyRQ6hllVpn"],[4,"10ql8qSCP3kG_SkvaMP8ZlsAy5MOEV7ek"],[6,"15IllRqLawqwGxOZ9POFx-GuBs_meMoMm"],[9,"1hWaKf5jiG6-QFCqPwK9za6x1A0O9atyJ"],[11,"1hOAFu-mBSALkvHlGjLF1zrr4GIQNidUh"],[11,"1L3_JvGRCRXn1sv44jiciTNqiK-MrRWiE"],[17,"1kefs1c8sCaikHB7auvBjx6yYG8ENkz2d"],[17,"1jhZa9HEGPez04JSHP74PKBTMkkNv2beQ"],[18,"1opXwGK7CDB0oQR8B4Fs45fKFpRxr0t-x"],[19,"1ZR9whoF98EUH-4Gxj1goq1QIGLHi5wh3"],[20,"1AE7nGgnJiMqylRrmYf1Mxk2Z9ubzpIld"],[23,"19ZlzEyhpfxR_NIbOgtDi4JUSD4Uu7nIe"]]},
+ {k:"print",t:"版畫",w:[[0,"1quRDWtcyp9KQJD5kKf4xhP61I9lmNwU-"],[0,"1V648x85xdnZQp1RB3wssy42CuTyx9Z-y"]]},
+ {k:"dessert",t:"甜點人",w:[[22,"1BV1OtZaP3vfwxV-L6zkh8LA96RwHwVC5"]]}
+];
+const pad=s=>String(s).padStart(2,"0");
+const nameOf=s=>s?S[s]:"美術班作品";
+
+const tabs=document.getElementById("tabs"),gal=document.getElementById("gallery"),more=document.getElementById("more");
+let current=W[0].k;
+function render(){
+  tabs.innerHTML=W.map(c=>`<button class="tab" type="button" data-k="${c.k}" aria-pressed="${c.k===current}">${c.t}<span class="n">${c.w.length}</span></button>`).join("");
+  const c=W.find(x=>x.k===current);
+  gal.innerHTML=c.w.map(([s,id,sp],i)=>`<button class="card" type="button" data-i="${i}"><img src="thumbs/${id}.jpg" alt="${nameOf(s)}的作品${sp?"：「"+sp+"」":""}" loading="lazy"><div class="who"><b>${nameOf(s)}</b><span>${s?"No. "+pad(s):""}</span></div>${sp?`<span class="sp">${sp}</span>`:""}</button>`).join("");
+  more.textContent=`「${c.t}」共 ${c.w.length} 件`;
+}
+tabs.addEventListener("click",e=>{const b=e.target.closest(".tab");if(!b)return;current=b.dataset.k;render();try{localStorage.setItem("yj-tab",current)}catch(_){}});
+try{const t=localStorage.getItem("yj-tab");if(t&&W.some(c=>c.k===t))current=t}catch(_){}
+render();
+
+const lb=document.getElementById("lb"),lbImg=document.getElementById("lbImg");let idx=0,lastFocus=null;
+function show(i){const c=W.find(x=>x.k===current);idx=(i+c.w.length)%c.w.length;const [s,id,sp]=c.w[idx];
+  lbImg.src=`works/${id}.jpg`;lbImg.alt=`${nameOf(s)}的作品`;
+  document.getElementById("lbName").textContent=nameOf(s)+(sp?"　"+sp:"");
+  document.getElementById("lbCat").textContent=`${c.t}${s?" · 座號 "+pad(s):""} · ${idx+1} / ${c.w.length}`;}
+gal.addEventListener("click",e=>{const b=e.target.closest(".card");if(!b)return;lastFocus=b;show(+b.dataset.i);lb.hidden=false;document.getElementById("lbClose").focus()});
+function closeLb(){lb.hidden=true;lastFocus&&lastFocus.focus()}
+document.getElementById("lbClose").addEventListener("click",closeLb);
+document.getElementById("lbPrev").addEventListener("click",()=>show(idx-1));
+document.getElementById("lbNext").addEventListener("click",()=>show(idx+1));
+lb.addEventListener("click",e=>{if(e.target===lb)closeLb()});
+document.addEventListener("keydown",e=>{if(lb.hidden)return;if(e.key==="Escape")closeLb();if(e.key==="ArrowLeft")show(idx-1);if(e.key==="ArrowRight")show(idx+1)});
+
+const SHOP=[
+ {t:"帆布袋",sub:"A4 · 3 款",d:"同學的植物水彩滿版印在厚帆布上，裝得下畫冊與筆記。",price:200,deal:"2 個 $360",wide:true,v:[["bag-blue","紫藤藍"],["bag-mushroom","蕈菇橘"],["bag-rose","山茶紅"]]},
+ {t:"杯袋",sub:"帆布 · 3 款",d:"手搖杯專用帆布提袋，花卉一圈繞著杯身。",price:90,deal:"2 個 $160",wide:true,v:[["sleeve-red","山茶紅"],["sleeve-blue","紫藤藍"],["sleeve-yellow","向日葵黃"]]},
+ {t:"鑰匙圈",sub:"23 款",d:"每一款都是一位同學畫的台灣特有種。",price:60,deal:"2 個 $100",v:[["key-pangolin","穿山甲"],["key-cobra","眼鏡蛇"]]},
+ {t:"磁鐵",sub:"滴膠 · 21 款",d:"把花卉寫生貼上冰箱，每天看得見。",price:50,deal:"3 個 $120",v:[["magnet-1","山茶"],["magnet-2","山茶枝"],["magnet-4","茶花"]]},
+ {t:"筆記本",sub:"A5 · 3 款",d:"線圈筆記本，正反兩面都是同學的植物畫。",price:100,deal:"2 本 $180",v:[["note-redblue","紅藍"],["note-blueyellow","藍黃"],["note-yellowred","黃紅"]]}
+];
+const shopGrid=document.getElementById("shopGrid");
+shopGrid.innerHTML=SHOP.map((s,i)=>`<article class="item${s.wide?" wide":""}" data-i="${i}">
+  <div class="stage"><img src="shop/${s.v[0][0]}.webp" alt="${s.t}：${s.v[0][1]}" loading="lazy"></div>
+  <div class="swatches" role="group" aria-label="${s.t}款式">${s.v.map((v,j)=>`<button class="sw" type="button" data-j="${j}" aria-pressed="${j===0}" aria-label="${v[1]}" title="${v[1]}"><img src="shop/${v[0]}.webp" alt="" loading="lazy"></button>`).join("")}</div>
+  <h3>${s.t}<small>${s.sub}</small></h3>
+  <p>${s.d}</p>
+  <div class="price"><b>$${s.price}</b><span>${s.deal}</span></div>
+</article>`).join("");
+shopGrid.addEventListener("click",e=>{const b=e.target.closest(".sw");if(!b)return;const card=b.closest(".item"),s=SHOP[+card.dataset.i],v=s.v[+b.dataset.j];
+  const img=card.querySelector(".stage img");img.src=`shop/${v[0]}.webp`;img.alt=`${s.t}：${v[1]}`;
+  card.querySelectorAll(".sw").forEach(x=>x.setAttribute("aria-pressed",x===b))});
+
+(function(){
+  const open=new Date("2027-04-02T00:00:00+08:00"),close=new Date("2027-04-12T23:59:59+08:00"),now=new Date(),el=document.getElementById("countdown");
+  el.innerHTML=now<open?`距離開幕還有 <b>${Math.ceil((open-now)/864e5)}</b> 天`:now<=close?`<b>展覽進行中</b>`:`展覽已圓滿落幕，謝謝光臨`;
+})();
+
+document.querySelectorAll(".copy").forEach(b=>b.addEventListener("click",async()=>{
+  const el=document.getElementById(b.dataset.copy),txt=el.textContent.trim(),old=b.textContent;
+  try{await navigator.clipboard.writeText(txt);b.textContent="已複製"}catch(_){const r=document.createRange();r.selectNodeContents(el);const s=getSelection();s.removeAllRanges();s.addRange(r);b.textContent="已選取，請手動複製"}
+  setTimeout(()=>b.textContent=old,1800);
+}));
+</script>
