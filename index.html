@@ -210,7 +210,8 @@ section{position:relative}
 .shop-note{margin-top:16px;font-size:13px;color:var(--ink-soft)}
 
 /* contact */
-.contact{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.contact{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;max-width:780px}
+.c .note{font-size:13px;color:var(--ink-soft);margin-top:2px}
 @media (max-width:760px){.contact{grid-template-columns:minmax(0,1fr)}}
 .c{background:var(--sheet);border:1px solid var(--line);border-radius:14px;padding:18px}
 .c h3{font-size:15px;color:var(--moss);margin-bottom:6px;font-family:var(--f-body)}
@@ -381,8 +382,7 @@ footer .critters img{height:56px;width:auto;max-width:none}
     <div class="chap"><div><span class="no">Chapter Five</span><h2>聯繫我們</h2></div><p>團體參觀預約、商品詢問或媒體採訪，歡迎與我們聯絡。</p></div>
     <div class="contact">
       <div class="c"><h3>主辦</h3><p>國立清華大學附設實驗小學<br>美術班畢業班 · 進德里</p></div>
-      <div class="c"><h3>聯絡人<span class="todo">待填</span></h3><p class="val" id="contactName">美術班導師 / 公關組</p><p class="val" id="contactPhone">03-000-0000 #000</p><button class="copy" type="button" data-copy="contactPhone">複製電話</button></div>
-      <div class="c"><h3>Email<span class="todo">待填</span></h3><p class="val" id="contactMail">artclass@example.edu.tw</p><button class="copy" type="button" data-copy="contactMail">複製 Email</button></div>
+      <div class="c"><h3>聯絡電話</h3><p class="val" id="contactPhone">(03) 528-2420</p><p class="note">清大附小校本部總機，請轉美術班</p><p class="note">新竹市四維路 47 號</p><button class="copy" type="button" data-copy="contactPhone">複製電話</button></div>
     </div>
   </div>
 </section>
