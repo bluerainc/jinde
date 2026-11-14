@@ -179,6 +179,25 @@ section{position:relative}
 .lb-actions{display:flex;gap:8px;flex-wrap:wrap}
 .lb-actions .btn{padding:8px 16px;font-size:14px}
 
+/* media — photos & videos for families */
+#media{--accent:var(--cobalt)}
+.media-head{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;margin-bottom:24px}
+.media-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:18px}
+.mcard{position:relative;display:block;width:100%;border:0;padding:0;background:var(--sheet);border-radius:12px;overflow:hidden;box-shadow:var(--shadow);cursor:pointer;text-align:left;color:var(--ink);font-family:var(--f-body)}
+.mcard .thumb{position:relative;aspect-ratio:16/10;background:var(--mist)}
+.mcard .thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.mcard .play{position:absolute;left:50%;top:50%;width:58px;height:58px;margin:-29px 0 0 -29px;border-radius:50%;background:rgba(0,0,0,.55);display:grid;place-items:center}
+.mcard .play::after{content:"";border-left:18px solid #fff;border-top:11px solid transparent;border-bottom:11px solid transparent;margin-left:5px}
+.mcard .cap{padding:10px 12px 12px}
+.mcard .cap b{display:block;font-family:var(--f-zh);font-size:17px;line-height:1.35}
+.mcard .cap span{font-size:12px;color:var(--ink-soft)}
+.media-empty{border:1.5px dashed var(--line);border-radius:16px;padding:28px 24px;background:var(--sheet);display:grid;gap:10px;max-width:760px}
+.media-empty b{font-family:var(--f-zh);font-size:22px}
+.media-empty ul{margin:0;padding-left:1.2em;color:var(--ink-soft)}
+.media-note{font-size:12px;color:var(--ink-soft);margin-top:14px}
+.vbox{position:relative;width:min(960px,100%);aspect-ratio:16/9;background:#000;border-radius:6px;overflow:hidden}
+.vbox iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+
 /* shop — over the autumn deer scene */
 #shop{--accent:var(--ember)}
 .shop{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:22px}
@@ -245,6 +264,7 @@ footer .critters img{height:56px;width:auto;max-width:none}
       <li><a href="#about">理念</a></li>
       <li><a href="#visit">時間地點</a></li>
       <li><a href="#works">作品</a></li>
+      <li><a href="#media">影音</a></li>
       <li><a href="#shop">展售</a></li>
       <li><a href="#contact">聯繫</a></li>
     </ul>
@@ -268,6 +288,7 @@ footer .critters img{height:56px;width:auto;max-width:none}
       <p class="lede">六年來，我們畫過森林裡的花、溪邊的蛙、山裡的黑熊和天上的藍鵲。這一次，把整座島嶼的生命帶進清華大學圖書館，邀你走進孩子們筆下的森林。</p>
       <div class="cta">
         <a class="btn" href="#works">走進森林看作品</a>
+        <a class="btn ghost" href="#media">▶ 影音紀錄</a>
         <a class="btn ghost" href="#visit">展期與交通</a>
       </div>
     </div>
@@ -360,6 +381,18 @@ footer .critters img{height:56px;width:auto;max-width:none}
   </div>
 </section>
 
+<section id="media" class="pad" style="background:var(--mist)">
+  <div class="wrap">
+    <div class="chap"><div><span class="no">Behind the Scenes</span><h2>影音紀錄</h2></div><p>開幕、導覽與創作過程的照片和影片，讓家人在家也能一起看展。</p></div>
+    <div class="media-head">
+      <div class="tabs" id="mtabs" role="toolbar" aria-label="影音類型" style="margin:0"></div>
+      <a class="btn" id="albumBtn" href="#" target="_blank" rel="noopener" hidden>看完整相簿 ↗</a>
+    </div>
+    <div id="mgrid"></div>
+    <p class="media-note">照片與影片僅供家長與親友欣賞，請勿轉載或作商業使用。</p>
+  </div>
+</section>
+
 <section id="shop">
   <div class="banner"><img src="scenes/autumn-deer.jpg" srcset="scenes/autumn-deer-s.jpg 900w, scenes/autumn-deer.jpg 1671w" sizes="100vw" alt="秋日森林裡的梅花鹿、山羌、蝴蝶與鍬形蟲" width="1671" height="941" loading="lazy"></div>
   <svg class="hills" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true" style="height:clamp(40px,6vw,90px);position:relative;z-index:1;margin-top:calc(-1 * clamp(40px,6vw,90px))"><use href="#hills"/></svg>
@@ -399,6 +432,7 @@ footer .critters img{height:56px;width:auto;max-width:none}
 <div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-labelledby="lbName">
   <div class="lb-inner">
     <img id="lbImg" alt="">
+    <div class="vbox" id="lbVid" hidden></div>
     <div class="lb-meta">
       <div><h3 id="lbName"></h3><p id="lbCat"></p></div>
       <div class="lb-actions">
@@ -436,18 +470,53 @@ tabs.addEventListener("click",e=>{const b=e.target.closest(".tab");if(!b)return;
 try{const t=localStorage.getItem("yj-tab");if(t&&W.some(c=>c.k===t))current=t}catch(_){}
 render();
 
-const lb=document.getElementById("lb"),lbImg=document.getElementById("lbImg");let idx=0,lastFocus=null;
-function show(i){const c=W.find(x=>x.k===current);idx=(i+c.w.length)%c.w.length;const [s,id,sp]=c.w[idx];
-  lbImg.src=`works/${id}.jpg`;lbImg.alt=`${nameOf(s)}的作品`;
-  document.getElementById("lbName").textContent=nameOf(s)+(sp?"　"+sp:"");
-  document.getElementById("lbCat").textContent=`${c.t}${s?" · 座號 "+pad(s):""} · ${idx+1} / ${c.w.length}`;}
-gal.addEventListener("click",e=>{const b=e.target.closest(".card");if(!b)return;lastFocus=b;show(+b.dataset.i);lb.hidden=false;document.getElementById("lbClose").focus()});
-function closeLb(){lb.hidden=true;lastFocus&&lastFocus.focus()}
+const lb=document.getElementById("lb"),lbImg=document.getElementById("lbImg"),lbVid=document.getElementById("lbVid");let idx=0,lastFocus=null,lbList="works";
+function show(i){
+  lbVid.hidden=true;lbVid.innerHTML="";lbImg.hidden=false;
+  if(lbList==="works"){const c=W.find(x=>x.k===current);idx=(i+c.w.length)%c.w.length;const [s,id,sp]=c.w[idx];
+    lbImg.src=`works/${id}.jpg`;lbImg.alt=`${nameOf(s)}的作品`;
+    document.getElementById("lbName").textContent=nameOf(s)+(sp?"　"+sp:"");
+    document.getElementById("lbCat").textContent=`${c.t}${s?" · 座號 "+pad(s):""} · ${idx+1} / ${c.w.length}`;return}
+  const L=MEDIA[lbList];idx=(i+L.length)%L.length;const m=L[idx];
+  if(lbList==="photos"){lbImg.src=m.src;lbImg.alt=m.t||"展覽照片"}
+  else{lbImg.hidden=true;lbVid.hidden=false;lbVid.innerHTML=`<iframe src="https://www.youtube-nocookie.com/embed/${m.yt}?rel=0" title="${m.t||"影片"}" allow="accelerometer; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>`}
+  document.getElementById("lbName").textContent=m.t||(lbList==="photos"?"展覽照片":"影片");
+  document.getElementById("lbCat").innerHTML=`${m.d||""}${m.d?" · ":""}${idx+1} / ${L.length}${lbList==="videos"?` · <a href="https://youtu.be/${m.yt}" target="_blank" rel="noopener">在 YouTube 開啟</a>`:""}`;
+}
+function openLb(list,i,from){lbList=list;lastFocus=from;show(i);lb.hidden=false;document.getElementById("lbClose").focus()}
+gal.addEventListener("click",e=>{const b=e.target.closest(".card");if(!b)return;openLb("works",+b.dataset.i,b)});
+function closeLb(){lb.hidden=true;lbVid.innerHTML="";lastFocus&&lastFocus.focus()}
 document.getElementById("lbClose").addEventListener("click",closeLb);
 document.getElementById("lbPrev").addEventListener("click",()=>show(idx-1));
 document.getElementById("lbNext").addEventListener("click",()=>show(idx+1));
 lb.addEventListener("click",e=>{if(e.target===lb)closeLb()});
 document.addEventListener("keydown",e=>{if(lb.hidden)return;if(e.key==="Escape")closeLb();if(e.key==="ArrowLeft")show(idx-1);if(e.key==="ArrowRight")show(idx+1)});
+
+/* ===== 影音紀錄：之後只要在這裡新增資料即可 =====
+   album  ：完整相簿連結（Google 相簿或雲端資料夾的分享連結），填入後會出現「看完整相簿」按鈕
+   photos ：照片放在 media/ 資料夾，例：{src:"media/opening-01.jpg", t:"開幕合照", d:"2027/04/02"}
+   videos ：先上傳到 YouTube（可設「不公開」），填影片 ID，例：網址 youtu.be/AbCdEf12345 → {yt:"AbCdEf12345", t:"開幕影片", d:"2027/04/02"}
+*/
+const MEDIA={
+  album:"",
+  photos:[],
+  videos:[]
+};
+const mtabs=document.getElementById("mtabs"),mgrid=document.getElementById("mgrid");
+let mcur="photos";
+function renderMedia(){
+  const T={photos:"照片",videos:"影片"};
+  mtabs.innerHTML=Object.keys(T).map(k=>`<button class="tab" type="button" data-k="${k}" aria-pressed="${k===mcur}">${T[k]}<span class="n">${MEDIA[k].length}</span></button>`).join("");
+  const L=MEDIA[mcur];
+  if(!L.length){mgrid.innerHTML=`<div class="media-empty"><b>${mcur==="photos"?"照片":"影片"}即將上架</b><span>展覽期間會陸續更新，歡迎再回來看看：</span><ul><li>作品上牆的幕後花絮</li><li>4/2 開幕活動</li><li>小小導覽員介紹作品</li><li>同學們的創作過程</li></ul></div>`;return}
+  mgrid.innerHTML=`<div class="media-grid">${L.map((m,i)=>mcur==="photos"
+    ?`<button class="mcard" type="button" data-i="${i}"><div class="thumb"><img src="${m.src}" alt="${m.t||"展覽照片"}" loading="lazy"></div>${m.t||m.d?`<div class="cap"><b>${m.t||""}</b><span>${m.d||""}</span></div>`:""}</button>`
+    :`<button class="mcard" type="button" data-i="${i}"><div class="thumb"><img src="https://i.ytimg.com/vi/${m.yt}/hqdefault.jpg" alt="" loading="lazy"><span class="play" aria-hidden="true"></span></div><div class="cap"><b>${m.t||"影片"}</b><span>${m.d||""}</span></div></button>`).join("")}</div>`;
+}
+mtabs.addEventListener("click",e=>{const b=e.target.closest(".tab");if(!b)return;mcur=b.dataset.k;renderMedia()});
+mgrid.addEventListener("click",e=>{const b=e.target.closest(".mcard");if(!b)return;openLb(mcur,+b.dataset.i,b)});
+if(MEDIA.album){const a=document.getElementById("albumBtn");a.href=MEDIA.album;a.hidden=false}
+renderMedia();
 
 const SHOP=[
  {t:"帆布袋",sub:"A4 · 3 款",d:"同學的植物水彩滿版印在厚帆布上，裝得下畫冊與筆記。",price:200,deal:"2 個 $360",wide:true,v:[["bag-blue","紫藤藍"],["bag-mushroom","蕈菇橘"],["bag-rose","山茶紅"]]},
